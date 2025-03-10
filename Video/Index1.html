@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BVB Splashscreen - Champions League</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    /* Extrem scharfer Hintergrund */
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('./champions league 2.jpg') no-repeat center center/cover;
+      filter: contrast(1.5) saturate(1.3) brightness(1.2); /* Maximale Schärfe */
+      z-index: -1;
+    }
+
+    /* Leichter Blur-Effekt entfernen (falls vorher aktiv) */
+    #background::before {
+      display: none;
+    }
+
+    /* BVB-Logo Overlay */
+    #background::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/BVB_Logo.svg');
+      background-repeat: repeat;
+      background-size: 150px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    #splashscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .splash-overlay {
+      position: absolute;
+      top: 5%;
+      width: 100%;
+      text-align: center;
+      color: #FDE100;
+      font-family: 'Oswald', sans-serif;
+      font-size: 4em;
+      font-weight: 700;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+      z-index: 1010;
+      opacity: 0;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Video-Styling mit Champions-League-Effekt */
+    #video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+      gap: 20px;
+      margin-top: 30px;
+      box-sizing: border-box;
+    }
+
+    #video-container video {
+      width: 45%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 255, 0.7), 0px 0px 40px rgba(255, 0, 255, 0.5);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #video-container video:hover {
+      transform: scale(1.05);
+    }
+
+    /* Eintrittsbutton */
+    #enter-button {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 40px;
+      font-size: 1.5em;
+      background-color: #FDE100;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      text-decoration: none;
+      z-index: 1010;
+      font-family: 'Oswald', sans-serif;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #enter-button:hover {
+      background-color: #ffd700;
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    /* Media Query für kleine Bildschirme */
+    @media (max-width: 768px) {
+      #video-container {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+      }
+
+      #video-container video {
+        width: 90%;
+        max-height: 300px;
+        margin-bottom: 15px;
+      }
+
+      .splash-overlay {
+        font-size: 3em;
+      }
+
+      #enter-button {
+        font-size: 2em;
+        padding: 15px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="background"></div>
+
+  <div id="splashscreen">
+    <div class="splash-overlay">
+      Willkommen beim BVB!
+    </div>
+    
+    <div id="video-container">
+      <video id="second-video" autoplay muted>
+        <source src="file:///H:/WEB%20ASOO/NEUE%20WEBSITE/Vorlage%202-20250203/Vorlage%202/Video/e93d600142b040999defd1f97cd654e8.mp4" type="video/mp4">
+        Ihr Browser unterstützt dieses Videoformat nicht.
+      </video>
+
+      <video id="third-video" autoplay muted>
+        <source src="file:///H:/WEB%20ASOO/NEUE%20WEBSITE/Vorlage%202-20250203/Vorlage%202/Video/5ecd3bc4df424f4bbc749b07557a4990 (1).mp4" type="video/mp4">
+        Ihr Browser unterstützt dieses Videoformat nicht.
+      </video>
+
+      
+    <a id="enter-button" href="file:///H:/WEB%20ASOO/NEUE%20WEBSITE/Vorlage%202-20250203/Vorlage%202/index.html">Zur Hauptseite</a>
+  </div>
+
+</body>
+</html>
